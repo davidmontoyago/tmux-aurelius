@@ -15,7 +15,7 @@ get_meditation() {
     author="${author%\"}"
     author="${author#\"}"
 
-    echo "${quote} --${author}"
+    printf ' %s\n\n %s' "${quote}" "${author}"
 }
 
 main() {

@@ -2,14 +2,17 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# for log keeping with 'tmux show-messages'
-tmux display "[INFO] tmux-aurelius: fetching a meditation"
-tmux display-message "Meditation"
+# tmux display "[INFO] tmux-aurelius: fetching a meditation"
+# tmux display-message "Meditation"
 
 main() {
     meditation="$($CURRENT_DIR/api.sh)"
     # display in the current pane
-    echo ${meditation}
+    # echo ${meditation}
+
+    # display as popup
+    export meditation="$meditation" &&
+        tmux display-popup -E -b "double" -h15 -w60 "printf '\n%s\n\n\n' \"${meditation}\" & sleep 3"
 }
 
 main
