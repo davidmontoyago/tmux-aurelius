@@ -4,11 +4,20 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # tmux display "[INFO] tmux-aurelius: fetching a meditation"
 # tmux display-message "Meditation"
-# echo $CURRENT_DIR
 
 main() {
-    # declare meditation="$($CURRENT_DIR/api/v1.sh)"
-    declare meditation="$($CURRENT_DIR/api/v2.sh)"
+    declare -a apis
+    # enumerate here source apis
+    apis[0]="$CURRENT_DIR/api/v1.sh"
+    apis[1]="$CURRENT_DIR/api/v2.sh"
+
+    # pick a random api
+    declare size=${#apis[@]}
+    declare index=$(($RANDOM % $size))
+    declare api="${apis[$index]}"
+
+    # invoke the api
+    declare meditation=$($api)
 
     declare -i padding=(55-15)/2
 
