@@ -2,12 +2,13 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-source "$CURRENT_DIR/helpers.sh"
+source "$CURRENT_DIR/../helpers.sh"
 
 get_meditation() {
-    meditation="$(curl https://stoicquotesapi.com/v1/api/quotes/random)"
+    # See https://github.com/benhoneywill/stoic-quotes
+    meditation="$(curl https://stoic-quotes.com/api/quote)"
 
-    quote="$(json_extract "body" "${meditation}")"
+    quote="$(json_extract "text" "${meditation}")"
     quote="${quote%\"}"
     quote="${quote#\"}"
 
