@@ -2,9 +2,10 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# shellcheck source=./scripts/helpers.sh
 source "$CURRENT_DIR/../helpers.sh"
 
-get_meditation() {
+get_quote() {
     # See https://github.com/benhoneywill/stoic-quotes
     meditation="$(curl https://stoic-quotes.com/api/quote)"
 
@@ -20,7 +21,7 @@ get_meditation() {
 }
 
 main() {
-    get_meditation
+    get_quote
 }
 
 main

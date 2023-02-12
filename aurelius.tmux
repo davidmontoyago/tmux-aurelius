@@ -2,7 +2,7 @@
 
 # Get current directory
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PID_DIR=~/.tmux/meditations
+PID_DIR=~/.tmux/aurelius
 
 # prepare pid file directory
 if [[ ! -d $PID_DIR ]]; then

@@ -11,7 +11,8 @@ function json_extract() {
   local pair_regex="\"${key}\"[[:space:]]*:[[:space:]]*(${value_regex})"
 
   if [[ ${json} =~ ${pair_regex} ]]; then
-    echo $(sed 's/^"\|"$//g' <<< "${BASH_REMATCH[1]}")
+    # shellcheck disable=SC2001
+    sed 's/^"\|"$//g' <<< "${BASH_REMATCH[1]}"
   else
     return 1
   fi

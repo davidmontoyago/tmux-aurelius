@@ -2,9 +2,6 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# tmux display "[INFO] tmux-aurelius: fetching a meditation"
-# tmux display-message "Meditation"
-
 main() {
     declare -a apis
     # enumerate here source apis
@@ -13,16 +10,18 @@ main() {
 
     # pick a random api
     declare size=${#apis[@]}
-    declare index=$(($RANDOM % $size))
+    declare index=$((RANDOM % size))
     declare api="${apis[$index]}"
 
     # invoke the api
-    declare meditation=$($api)
+    declare meditation
+    meditation=$($api)
 
-    declare -i padding=(55-15)/2
+    declare -i padding
+    padding=(55-15)/2
 
     # display as popup
-    export meditation="$meditation" padding=$padding &&
+    export meditation="$meditation" padding="$padding" &&
         tmux display-popup -E \
             -b "single" -S "fg=green" -h15 -w55 \
             "printf '\n%s\n\n\n\n\n\n%c\e[%db\e[30m\e[102m%s' \"${meditation}\" \" \" $padding \"<Accept>\" & \
