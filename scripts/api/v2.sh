@@ -17,7 +17,7 @@ get_quote() {
     author="${author%\"}"
     author="${author#\"}"
 
-    printf ' %s\n\n%s' "${quote}" "${author}" | fold -s -w 50 | sed -e "2,\$s/^/ /"
+    printf ' %s\n\n\t\t\t\t%s' "${quote}" "${author}" | fold -s -w 50 | sed -e "2,\$s/^/ /"
 }
 
 main() {
